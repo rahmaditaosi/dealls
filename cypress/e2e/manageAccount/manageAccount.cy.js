@@ -402,7 +402,7 @@ describe('Manage Account Functionality', () => {
         // Klik icon Edit Form Account Details
         cy.get('.user-a8093a5d-48df-4ae9-8b56-13568239b3b3  .icon-edit.edit-action.right').should('be.visible').click()
 
-        // Edit For
+        // Edit Form
         cy.get('#adminui-usernamea8093a5d-48df-4ae9-8b56-13568239b3b3-field').clear().type('osirahmadita')
         cy.get('#adminui-privilegeLevela8093a5d-48df-4ae9-8b56-13568239b3b3-field').select('Full')
         cy.get('#adminui-user-savea8093a5d-48df-4ae9-8b56-13568239b3b3').click()
