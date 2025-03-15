@@ -1,0 +1,18 @@
+{
+  "name": "openmrs",
+  "version": "1.0.0",
+  "description": "Automation testing web using cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open",
+    "test:account": "cypress run --spec 'cypress/e2e/manageAccount/*.cy.js'"
+  },
+  "author": "Osi Rahmadita",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^14.2.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.6.0"
+  }
+}
