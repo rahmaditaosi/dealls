@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('signin', (email = 'eyalia@gmail.com', password = 'eyalia123!!') => {
+Cypress.Commands.add('signin', (email = 'eyalia1@gmail.com', password = 'eyalia123!!') => {
     cy.viewport(1920, 1080)
     cy.visit('https://job-portal-user-dev-skx7zw44dq-et.a.run.app/sign-in?returnUrl=%2F')
     cy.get('#basic_email').type(email)
@@ -48,3 +48,35 @@ Cypress.Commands.add('TimeRangeSecond', (startTime, endTime) => {
     cy.get('#proposedTimes_1_startTime').type(startTime)
     cy.get('#proposedTimes_1_endTime').type(endTime)
 });
+
+Cypress.Commands.add('pilihMentorAvailable', () => {
+    cy.visit('https://job-portal-user-dev-skx7zw44dq-et.a.run.app/mentoring')
+  
+    cy.get('a[class*="MentorCard_mentor_card"]').then(($cards) => {
+      const total = $cards.length;
+  
+      let found = false;
+  
+      const cobaMentor = (index) => {
+        if (index >= total || found) return;
+  
+        cy.visit('https://job-portal-user-dev-skx7zw44dq-et.a.run.app/mentoring')
+        cy.get('a[class*="MentorCard_mentor_card"]').eq(index).click();
+        cy.wait(5000)
+        cy.get('button').then(($btn) => {
+          const btnText = $btn.text().trim();
+  
+          if (btnText === 'Ajukan Jadwal') {
+            found = true;
+            cy.get('button').contains('Ajukan Jadwal').click()
+          } else {
+            cobaMentor(index + 1);
+          }
+        });
+      };
+  
+      cobaMentor(0);
+    });
+  });
+  
+  

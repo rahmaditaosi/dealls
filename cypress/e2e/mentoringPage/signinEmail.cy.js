@@ -11,7 +11,7 @@ describe('Sign In Functionality', () => {
   })
 
   it('should sign in successfully with valid credentials', () => {
-    cy.get('#basic_email').type('eyalia@gmail.com') // isi email
+    cy.get('#basic_email').type('eyalia1@gmail.com') // isi email
     cy.get('#basic_password').type('eyalia123!!') // isi password
     cy.get('button').contains('Sign In').click() // klik tombol sign in
 
@@ -23,7 +23,7 @@ describe('Sign In Functionality', () => {
   })
 
   it('should show error message with wrong password', () => {
-    cy.get('#basic_email').type('eyalia@gmail.com') // isi email
+    cy.get('#basic_email').type('eyalia1@gmail.com') // isi email
     cy.get('#basic_password').type('eyalia123!!1') // isi password
     cy.get('button').contains('Sign In').click() // klik tombol sign in
 
@@ -32,7 +32,7 @@ describe('Sign In Functionality', () => {
   })
 
   it('should show error message with wrong email', () => {
-    cy.get('#basic_email').type('eyalia1@gmail.com') // isi email
+    cy.get('#basic_email').type('eyalia2@gmail.com') // isi email
     cy.get('#basic_password').type('eyalia123!!') // isi password
     cy.get('button').contains('Sign In').click() // klik tombol sign in
 
@@ -58,7 +58,7 @@ describe('Sign In Functionality', () => {
   })
 
   it('should show error message with wrong format password', () => {
-    cy.get('#basic_email').type('eyalia@gmail.com') // isi email
+    cy.get('#basic_email').type('eyalia1@gmail.com') // isi email
     cy.get('#basic_password').type('eya') // isi password
     cy.get('button').contains('Sign In').click() // klik tombol sign in
 
