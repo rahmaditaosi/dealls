@@ -24,12 +24,27 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', (username = 'admin', password = 'Admin123') => {
-    cy.visit('https://o2.openmrs.org/openmrs/referenceapplication/login.page')
-    cy.get('#username').type(username);
-    cy.get('#password').type(password);
-    cy.get('#Pharmacy').click();
-    cy.get('#loginButton').click();
+Cypress.Commands.add('signin', (email = 'eyalia@gmail.com', password = 'eyalia123!!') => {
+    cy.viewport(1920, 1080)
+    cy.visit('https://job-portal-user-dev-skx7zw44dq-et.a.run.app/sign-in?returnUrl=%2F')
+    cy.get('#basic_email').type(email)
+    cy.get('#basic_password').type(password)
+    cy.get('button').contains('Sign In').click()
+    cy.get('.ant-message-success').should('exist').and('contain.text', 'Sign in success') // muncul toast sign in success
+});
 
-    cy.url().should('include', '/home');
+Cypress.Commands.add('selectDateRangeNextMonth', (startDay, endDay) => {
+    cy.get('.rmdp-arrow-container.rmdp-right').click()
+    cy.get('.rmdp-day:not(.rmdp-deactive)').contains(startDay).click()
+    cy.get('.rmdp-day:not(.rmdp-deactive)').contains(endDay).click()
+});
+
+Cypress.Commands.add('TimeRangeFirst', (startTime, endTime) => {
+    cy.get('#proposedTimes_0_startTime').type(startTime)
+    cy.get('#proposedTimes_0_endTime').type(endTime)
+});
+
+Cypress.Commands.add('TimeRangeSecond', (startTime, endTime) => {
+    cy.get('#proposedTimes_1_startTime').type(startTime)
+    cy.get('#proposedTimes_1_endTime').type(endTime)
 });

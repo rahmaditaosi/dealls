@@ -1,5 +1,5 @@
 {
-  "name": "openmrs",
+  "name": "dealls",
   "version": "1.0.0",
   "description": "Automation testing web using cypress",
   "main": "index.js",
