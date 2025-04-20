@@ -16,9 +16,9 @@ describe('Sign In Functionality', () => {
     cy.get('button').contains('Sign In').click() // klik tombol sign in
 
     // Assertion success
-    cy.wait(5000)
     cy.get('.ant-message-success').should('exist').and('contain.text', 'Sign in success') // muncul toast sign in success
     cy.get('img[alt="user photo"]').should('be.visible').click() // pastikan muncul user photo ketika berhasil sign in
+    cy.wait(5000)
     cy.contains('Keluar').should('be.visible') // pastikan ada tulisan Keluar
   })
 

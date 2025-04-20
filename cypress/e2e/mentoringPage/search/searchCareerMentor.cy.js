@@ -14,6 +14,7 @@ describe('Search Career Mentor Tests', () => {
     testCases.forEach((test) => {
       it(`should search by ${test.label} and validate result`, () => {
         cy.visit('https://job-portal-user-dev-skx7zw44dq-et.a.run.app/mentoring')
+        cy.wait(5000)
         cy.get('#searchMentor').type(test.keyword);
 
         // Validasi hasil ada

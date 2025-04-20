@@ -15,6 +15,7 @@ describe('Search Academic Mentor Tests', () => {
       it(`should search by ${test.label} and validate result`, () => {
         cy.visit('https://job-portal-user-dev-skx7zw44dq-et.a.run.app/mentoring')
         cy.contains('a', 'Akademik (S1 & S2)').click();
+        cy.wait(5000)
         cy.get('#searchMentor').type(test.keyword);
 
         // Validasi hasil ada
